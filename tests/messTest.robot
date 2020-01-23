@@ -12,5 +12,6 @@ Verify That Use Is Able To Login In LinkedIn
     Login User Name Should Display
 
 Verify User Is Located And Message Is Sent
-    Search User And Navigate To User Profile Page In LinkedIn    Vallalarasu Pandiyan (Valla)
+	#Replace TEST USER with FULL NAME of the LinkedIn USER in below line
+    Search User And Navigate To User Profile Page In LinkedIn    TEST USER
     Send Message To User    How r u da?
