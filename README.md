@@ -16,7 +16,7 @@ STEP 7: Run below command:
 
 robot -d results\test -v BROWSER:chrome -v USERNAME:linkedinUsername -v PWD:LinkedinPassword --pythonpath resources tests\
 
-Note From Line# 17:
+Note in STEP# 7:
 
       USERNAME is your LinkedIn User Name
       
