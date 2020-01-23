@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.0 on win32)" generated="20200123 19:42:48.814" rpa="false">
+<suite id="s1" name="Tests" source="C:\Users\818325\Documents\BHIMS\LinkedIn\tests">
+<suite id="s1-s1" name="applyJob" source="C:\Users\818325\Documents\BHIMS\LinkedIn\tests\applyJob.robot">
+<test id="s1-s1-t1" name="Verify That Use Is Able To Login In LinkedIn">
+<kw name="Navigate To Landing Page" library="landingPage">
+<kw name="Open Test Browser" library="baseClass">
+<arguments>
+<arg>${BASE_URL}</arg>
+</arguments>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<arguments>
+<arg>${testUrl}</arg>
+<arg>browser=${BROWSER}</arg>
+</arguments>
+<msg timestamp="20200123 19:42:49.726" level="INFO">Opening browser 'headlesschrome' to base url 'https://www.linkedin.com/'.</msg>
+<status status="PASS" starttime="20200123 19:42:49.725" endtime="20200123 19:42:53.616"></status>
+</kw>
+<kw name="Get Location" library="SeleniumLibrary">
+<doc>Returns the current browser window URL.</doc>
+<assign>
+<var>${hp_location}</var>
+</assign>
+<msg timestamp="20200123 19:42:53.624" level="INFO">${hp_location} = https://www.linkedin.com/</msg>
+<status status="PASS" starttime="20200123 19:42:53.616" endtime="20200123 19:42:53.624"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${hp_link}</arg>
+<arg>${hp_location}</arg>
+</arguments>
+<msg timestamp="20200123 19:42:53.625" level="INFO">${hp_link} = https://www.linkedin.com/</msg>
+<status status="PASS" starttime="20200123 19:42:53.624" endtime="20200123 19:42:53.625"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:49.725" endtime="20200123 19:42:53.625"></status>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<arguments>
+<arg>1920</arg>
+<arg>1080</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:42:53.625" endtime="20200123 19:42:54.789"></status>
+</kw>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${act_title}</var>
+</assign>
+<msg timestamp="20200123 19:42:54.804" level="INFO">${act_title} = LinkedIn: Log In or Sign Up</msg>
+<status status="PASS" starttime="20200123 19:42:54.790" endtime="20200123 19:42:54.804"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${act_title}</arg>
+<arg>LinkedIn: Log In or Sign Up</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:42:54.804" endtime="20200123 19:42:54.804"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:49.725" endtime="20200123 19:42:54.805"></status>
+</kw>
+<kw name="Login To LinkedIn" library="landingPage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${LIHP_LOCATORS.login_btn}</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:42:54.806" endtime="20200123 19:42:54.841"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>Element Should Be Visible</arg>
+<arg>${LIHP_LOCATORS.sigin_card}</arg>
+</arguments>
+<assign>
+<var>${Isdisplayed}</var>
+</assign>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<arguments>
+<arg>${LIHP_LOCATORS.sigin_card}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20200123 19:42:55.305" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-34.png"&gt;&lt;img src="selenium-screenshot-34.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20200123 19:42:54.852" endtime="20200123 19:42:55.305"></status>
+</kw>
+<msg timestamp="20200123 19:42:55.308" level="FAIL">Element with locator '//section[@class='sign-in-card show']' not found.</msg>
+<status status="FAIL" starttime="20200123 19:42:54.841" endtime="20200123 19:42:55.309"></status>
+</kw>
+<msg timestamp="20200123 19:42:55.309" level="INFO">${Isdisplayed} = False</msg>
+<status status="PASS" starttime="20200123 19:42:54.841" endtime="20200123 19:42:55.309"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${Isdisplayed}'=='True'</arg>
+<arg>Login Using Sign Card</arg>
+<arg>ELSE</arg>
+<arg>Login With Default Login Page</arg>
+</arguments>
+<kw name="Login With Default Login Page" library="landingPage">
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${LIHP_LOCATORS.login_btn}</arg>
+</arguments>
+<msg timestamp="20200123 19:42:55.310" level="INFO">Clicking element '//a[text()='Sign in']'.</msg>
+<status status="PASS" starttime="20200123 19:42:55.309" endtime="20200123 19:42:55.915"></status>
+</kw>
+<kw name="Page Title Should Be Loaded" library="common">
+<arguments>
+<arg>Welcome Back</arg>
+</arguments>
+<kw name="Replace String" library="String">
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<arguments>
+<arg>${COMMON_LOCATORS.title_text}</arg>
+<arg>TITLE-NAME</arg>
+<arg>${text}</arg>
+</arguments>
+<assign>
+<var>${locator}</var>
+</assign>
+<msg timestamp="20200123 19:42:55.916" level="INFO">${locator} = //h1[text()='Welcome Back']</msg>
+<status status="PASS" starttime="20200123 19:42:55.915" endtime="20200123 19:42:55.916"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:42:55.916" endtime="20200123 19:42:56.502"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20200123 19:42:56.603" level="INFO">Element '//h1[text()='Welcome Back']' contains text 'Welcome Back'.</msg>
+<status status="PASS" starttime="20200123 19:42:56.502" endtime="20200123 19:42:56.603"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:55.915" endtime="20200123 19:42:56.603"></status>
+</kw>
+<kw name="Enter Text In A Field" library="common">
+<arguments>
+<arg>username</arg>
+<arg>${USERNAME}</arg>
+</arguments>
+<kw name="Replace String" library="String">
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<arguments>
+<arg>${COMMON_LOCATORS.input_text}</arg>
+<arg>TEXT-NAME</arg>
+<arg>${field_name}</arg>
+</arguments>
+<assign>
+<var>${locator}</var>
+</assign>
+<msg timestamp="20200123 19:42:56.604" level="INFO">${locator} = //input[@id='username']</msg>
+<status status="PASS" starttime="20200123 19:42:56.603" endtime="20200123 19:42:56.604"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:42:56.604" endtime="20200123 19:42:56.622"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20200123 19:42:56.623" level="INFO">Typing text 'sekar.ramraj@gmail.com' into text field '//input[@id='username']'.</msg>
+<status status="PASS" starttime="20200123 19:42:56.623" endtime="20200123 19:42:56.735"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:56.603" endtime="20200123 19:42:56.735"></status>
+</kw>
+<kw name="Enter Text In A Field" library="common">
+<arguments>
+<arg>password</arg>
+<arg>${PWD}</arg>
+</arguments>
+<kw name="Replace String" library="String">
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<arguments>
+<arg>${COMMON_LOCATORS.input_text}</arg>
+<arg>TEXT-NAME</arg>
+<arg>${field_name}</arg>
+</arguments>
+<assign>
+<var>${locator}</var>
+</assign>
+<msg timestamp="20200123 19:42:56.736" level="INFO">${locator} = //input[@id='password']</msg>
+<status status="PASS" starttime="20200123 19:42:56.736" endtime="20200123 19:42:56.736"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:42:56.736" endtime="20200123 19:42:56.755"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20200123 19:42:56.755" level="INFO">Typing text 'Loyol@11' into text field '//input[@id='password']'.</msg>
+<status status="PASS" starttime="20200123 19:42:56.755" endtime="20200123 19:42:56.838"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:56.735" endtime="20200123 19:42:56.839"></status>
+</kw>
+<kw name="Click A Button" library="common">
+<arguments>
+<arg>Sign in</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>'${btn_type}'=='button'</arg>
+<arg>Replace String</arg>
+<arg>${COMMON_LOCATORS.btn_field}</arg>
+<arg>BUTTON-NAME</arg>
+<arg>${button}</arg>
+<arg>ELSE</arg>
+<arg>Replace String</arg>
+<arg>${COMMON_LOCATORS.input_btn_field}</arg>
+<arg>BUTTON-NAME</arg>
+<arg>${button}</arg>
+</arguments>
+<assign>
+<var>${locator}</var>
+</assign>
+<kw name="Replace String" library="String">
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<arguments>
+<arg>${COMMON_LOCATORS.btn_field}</arg>
+<arg>BUTTON-NAME</arg>
+<arg>${button}</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:42:56.839" endtime="20200123 19:42:56.840"></status>
+</kw>
+<msg timestamp="20200123 19:42:56.840" level="INFO">${locator} = //button[text()='Sign in']</msg>
+<status status="PASS" starttime="20200123 19:42:56.839" endtime="20200123 19:42:56.840"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:42:56.840" endtime="20200123 19:42:56.864"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20200123 19:42:56.864" level="INFO">Clicking element '//button[text()='Sign in']'.</msg>
+<status status="PASS" starttime="20200123 19:42:56.864" endtime="20200123 19:43:04.613"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:56.839" endtime="20200123 19:43:04.613"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:55.309" endtime="20200123 19:43:04.613"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:55.309" endtime="20200123 19:43:04.613"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:54.805" endtime="20200123 19:43:04.613"></status>
+</kw>
+<kw name="Login User Name Should Display" library="homePage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${HP_LOCATORS.uname}</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:43:04.614" endtime="20200123 19:43:04.644"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${HP_LOCATORS.uname}</arg>
+<arg>Ramraj Sekar</arg>
+</arguments>
+<msg timestamp="20200123 19:43:04.666" level="INFO">Element '//div[text()='Ramraj Sekar']' contains text 'Ramraj Sekar'.</msg>
+<status status="PASS" starttime="20200123 19:43:04.644" endtime="20200123 19:43:04.666"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:43:04.614" endtime="20200123 19:43:04.666"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:49.724" endtime="20200123 19:43:04.667" critical="yes"></status>
+</test>
+<test id="s1-s1-t2" name="Verify User Is Located And Message Is Sent">
+<kw name="Search User And Navigate To User Profile Page In LinkedIn" library="common">
+<arguments>
+<arg>Vallalarasu Pandiyan (Valla)</arg>
+</arguments>
+<kw name="Replace String" library="String">
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<arguments>
+<arg>${COMMON_LOCATORS.search_result_link}</arg>
+<arg>NAME</arg>
+<arg>${search_input}</arg>
+</arguments>
+<assign>
+<var>${user_locator}</var>
+</assign>
+<msg timestamp="20200123 19:43:04.669" level="INFO">${user_locator} = //span[@class="name-and-icon"]/span/span[contains(text(),'Vallalarasu Pandiyan (Valla)')]</msg>
+<status status="PASS" starttime="20200123 19:43:04.669" endtime="20200123 19:43:04.669"></status>
+</kw>
+<kw name="Replace String" library="String">
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<arguments>
+<arg>${COMMON_LOCATORS.username}</arg>
+<arg>NAME</arg>
+<arg>${search_input}</arg>
+</arguments>
+<assign>
+<var>${user_name}</var>
+</assign>
+<msg timestamp="20200123 19:43:04.669" level="INFO">${user_name} = //li[text()='Vallalarasu Pandiyan (Valla)']</msg>
+<status status="PASS" starttime="20200123 19:43:04.669" endtime="20200123 19:43:04.669"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${COMMON_LOCATORS.search_input}</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:43:04.669" endtime="20200123 19:43:04.696"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${COMMON_LOCATORS.search_input}</arg>
+<arg>${search_input}</arg>
+</arguments>
+<msg timestamp="20200123 19:43:04.697" level="INFO">Typing text 'Vallalarasu Pandiyan (Valla)' into text field '//input[@placeholder='Search']'.</msg>
+<status status="PASS" starttime="20200123 19:43:04.696" endtime="20200123 19:43:05.242"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${COMMON_LOCATORS.search_btn}</arg>
+</arguments>
+<msg timestamp="20200123 19:43:05.242" level="INFO">Clicking element '//button[@class='search-typeahead-v2__button search-global-typeahead__button']'.</msg>
+<status status="PASS" starttime="20200123 19:43:05.242" endtime="20200123 19:43:05.390"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${user_locator}</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:43:05.391" endtime="20200123 19:43:06.837"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${user_locator}</arg>
+</arguments>
+<msg timestamp="20200123 19:43:06.837" level="INFO">Clicking element '//span[@class="name-and-icon"]/span/span[contains(text(),'Vallalarasu Pandiyan (Valla)')]'.</msg>
+<status status="PASS" starttime="20200123 19:43:06.837" endtime="20200123 19:43:07.092"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>8s</arg>
+</arguments>
+<msg timestamp="20200123 19:43:15.096" level="INFO">Slept 8 seconds</msg>
+<status status="PASS" starttime="20200123 19:43:07.093" endtime="20200123 19:43:15.096"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${user_name}</arg>
+<arg>8s</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:43:15.096" endtime="20200123 19:43:15.148"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${user_name}</arg>
+<arg>${search_input}</arg>
+</arguments>
+<msg timestamp="20200123 19:43:15.175" level="INFO">Element '//li[text()='Vallalarasu Pandiyan (Valla)']' contains text 'Vallalarasu Pandiyan (Valla)'.</msg>
+<status status="PASS" starttime="20200123 19:43:15.148" endtime="20200123 19:43:15.176"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:43:04.668" endtime="20200123 19:43:15.176"></status>
+</kw>
+<kw name="Send Message To User" library="homePage">
+<arguments>
+<arg>How r u da?</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${HP_LOCATORS.msg_btn}</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:43:15.176" endtime="20200123 19:43:15.196"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${HP_LOCATORS.msg_btn}</arg>
+</arguments>
+<msg timestamp="20200123 19:43:15.196" level="INFO">Clicking element '//span[text()='Message']'.</msg>
+<status status="PASS" starttime="20200123 19:43:15.196" endtime="20200123 19:43:15.369"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${HP_LOCATORS.msg_box}</arg>
+<arg>30s</arg>
+</arguments>
+<status status="PASS" starttime="20200123 19:43:15.369" endtime="20200123 19:43:15.392"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${msg_input}</arg>
+</arguments>
+<assign>
+<var>${message}</var>
+</assign>
+<msg timestamp="20200123 19:43:15.393" level="INFO">${message} = How r u da?</msg>
+<status status="PASS" starttime="20200123 19:43:15.393" endtime="20200123 19:43:15.393"></status>
+</kw>
+<kw name="Press Keys" library="SeleniumLibrary">
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<arguments>
+<arg>${HP_LOCATORS.msg_box}</arg>
+<arg>${message}</arg>
+</arguments>
+<msg timestamp="20200123 19:43:15.393" level="INFO">Sending key(s) ('How r u da?',) to //div[@aria-label="Write a message…"]/p element.</msg>
+<msg timestamp="20200123 19:43:15.419" level="INFO">Sending keys How r u da?</msg>
+<status status="PASS" starttime="20200123 19:43:15.393" endtime="20200123 19:43:16.036"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${HP_LOCATORS.send_btn}</arg>
+</arguments>
+<msg timestamp="20200123 19:43:16.037" level="INFO">Clicking element '//button[text()='Send']'.</msg>
+<status status="PASS" starttime="20200123 19:43:16.037" endtime="20200123 19:43:16.118"></status>
+</kw>
+<kw name="Replace String" library="String">
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<arguments>
+<arg>${HP_LOCATORS.msg_sent}</arg>
+<arg>MSG-SENT</arg>
+<arg>${message}</arg>
+</arguments>
+<assign>
+<var>${sent_msg_locator}</var>
+</assign>
+<msg timestamp="20200123 19:43:16.118" level="INFO">${sent_msg_locator} = //p[text()="How r u da?"]</msg>
+<status status="PASS" starttime="20200123 19:43:16.118" endtime="20200123 19:43:16.118"></status>
+</kw>
+<kw name="Element Should Contain" library="SeleniumLibrary">
+<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
+<arguments>
+<arg>${sent_msg_locator}</arg>
+<arg>${message}</arg>
+</arguments>
+<msg timestamp="20200123 19:43:16.141" level="INFO">Element '//p[text()="How r u da?"]' contains text 'How r u da?'.</msg>
+<status status="PASS" starttime="20200123 19:43:16.118" endtime="20200123 19:43:16.142"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:43:15.176" endtime="20200123 19:43:16.142"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:43:04.668" endtime="20200123 19:43:16.142" critical="yes"></status>
+</test>
+<kw name="Common Teardown" library="baseClass" type="teardown">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20200123 19:43:16.144" endtime="20200123 19:43:18.515"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:43:16.143" endtime="20200123 19:43:18.515"></status>
+</kw>
+<status status="PASS" starttime="20200123 19:42:48.865" endtime="20200123 19:43:18.515"></status>
+</suite>
+<status status="PASS" starttime="20200123 19:42:48.818" endtime="20200123 19:43:18.530"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" id="s1" name="Tests">Tests</stat>
+<stat pass="2" fail="0" id="s1-s1" name="applyJob">Tests.applyJob</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
