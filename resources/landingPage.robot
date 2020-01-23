@@ -17,6 +17,7 @@ Navigate To Landing Page
     Should Contain    ${act_title}    LinkedIn: Log In or Sign Up
 
 Login To LinkedIn
+    Set Variables
     Wait Until Element Is Visible    ${LIHP_LOCATORS.login_btn}
     ${Isdisplayed}=      Run Keyword And Return Status    Element Should Be Visible    ${LIHP_LOCATORS.sigin_card}
     Run Keyword If    '${Isdisplayed}'=='True'    Login Using Sign Card

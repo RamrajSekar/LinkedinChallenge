@@ -5,17 +5,19 @@ Resource          baseClass.robot
 Resource          common.robot
 
 ***Variables***
-&{HP_LOCATORS}    uname=//div[text()='Ramraj Sekar']
+&{HP_LOCATORS}      uname=//div[text()='USER-NAME']
 ...                 msg_btn=//span[text()='Message']
-...                 msg_box=//div[@aria-label="Write a message…"]/p  #//aside[@id='msg-overlay']/div[2]/div[1]/form/div[3]/div/div[1]/div[@role='textbox']/p/br  #//div[@aria-label="Write a message…"]/p/br
+...                 msg_box=//div[@aria-label="Write a message…"]/p
 ...                 msg_sent=//p[text()="MSG-SENT"]
 ...                 send_btn=//button[text()='Send']
 
 
 ***Keywords***
 Login User Name Should Display
-    Wait Until Element Is Visible    ${HP_LOCATORS.uname}
-    Element Should Contain    ${HP_LOCATORS.uname}    Ramraj Sekar
+    [Arguments]    ${name}
+    ${locator}=    Replace String    ${HP_LOCATORS.uname}    USER-NAME    ${name}
+    Wait Until Element Is Visible    ${locator}
+    Element Should Contain    ${locator}    ${name}
 
 Send Message To User
     [Arguments]    ${msg_input}

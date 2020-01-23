@@ -8,11 +8,11 @@ ${USERNAME}          test
 ${PWD}               test@2020
 ${BASE_URL}          https://www.linkedin.com/
 ${SEL_TIMEOUT}       30
-${TEST_FILE_PATH}    ${EXECDIR}/resources/test_files/
-${RetryCnt}          3x
-${RetryDur}          1s
 
 ***Keywords***
+Set Variables
+    Set Selenium Timeout    ${SEL_TIMEOUT}
+    
 Open Test Browser
     [Arguments]    ${testUrl}
     Open Browser    ${testUrl}    browser=${BROWSER}
