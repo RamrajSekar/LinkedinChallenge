@@ -23,3 +23,6 @@ Note in STEP# 7:
       PWD is your LinkedIn Password
       
       For headless replace chrome with headlesschrome
+      
+IMPORTANT:
+Before STEP 7 do refer the files within tests folder and update them accordingly else test case will fail.
